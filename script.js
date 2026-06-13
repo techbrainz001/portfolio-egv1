@@ -217,21 +217,21 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'IT Solutions & Services Website',
             desc: 'A complete corporate web application showcasing digital consulting, software products, and customer integration services. Features a responsive layout, modern contact pages, and quick load speeds optimized for search rankings.',
             linkText: 'Visit Live Site',
-            url: 'https://example.com/vishvena'
+            url: 'https://vishvena.com/'
         },
         'sireesha': {
             title: 'Sireesha Nursing Home',
             category: 'Healthcare Landing Page',
             desc: 'A medical information portal built to help local patients view clinic working hours, schedule outpatient appointments, and access clinical descriptions. Fully compliant with patient privacy practices and responsive layouts.',
             linkText: 'Visit Clinic Portal',
-            url: 'https://example.com/sireesha'
+            url: 'https://sireeshanursinghome.com/'
         },
         'sreepoly': {
             title: 'Sreepoly Clinic & Dental',
             category: 'Dental Care Practice Website',
             desc: 'A modern landing page matching orthodontic and general dentistry services. Contains clinic services, custom booking features, patient ratings, and location lookup details.',
             linkText: 'Visit Practice Site',
-            url: 'https://example.com/sreepoly'
+            url: 'https://sites.google.com/view/dr-sree-poly-clinic-dental'
         },
         'enlight': {
             title: 'Enlight Clinics',
