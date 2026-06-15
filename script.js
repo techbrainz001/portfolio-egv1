@@ -248,48 +248,71 @@ document.addEventListener('DOMContentLoaded', () => {
             url: 'https://example.com/bhuvi'
         },
         // Apps
-        'daily-motivation': {
-            title: 'Daily Motivation Android App',
-            category: 'Inspiration & Wellness App',
-            desc: 'An Android app designed to push daily quotes, goal trackers, and mental focus exercises. Built using lightweight Java/Kotlin components and integrated with local notification engines.',
+        'political-quotes': {
+            title: 'Political Quotes Master',
+            category: 'Quotes',
+            desc: 'Discover 100+ powerful political quotes that shaped history and inspire change. From Churchill to Mandela, Gandhi to Lincoln – timeless insights at your fingertips..',
             linkText: 'View on Google Play',
-            url: 'https://play.google.com/store'
+            url: 'https://play.google.com/store/apps/details?id=political.quotesmaster'
         },
-        'health-tracker': {
-            title: 'Health Tracker Android App',
-            category: 'Fitness & Health Log',
-            desc: 'A personal dashboard app for calorie counting, daily steps logs, and water intake calculations. Uses native storage layers for secure locally retained data.',
+        'hanuman-stotra': {
+            title: 'Hanuman Stotra',
+            category: 'Gods',
+            desc: 'Powerful Mantras brings together a rich collection of sacred Hanuman stotras, kavachams, mantras, and namavalis in Telugu..',
+            linkText: 'View on Google Play',
+            url: 'https://play.google.com/store/apps/details?id=hanuman.stotra'
+        },
+        'mad-carz': {
+            title: 'MadCarz',
+            category: 'Games',
+            desc: 'Extreme Drive Challenge — a fast-paced driving game where balance and timing are everything!.Drive across tricky bridges, steep ramps, and wild obstacles in a physics-based adventure that tests your reflexes and control.',
+            linkText: 'View on Google Play',
+            url: 'https://play.google.com/store/apps/details?id=com.techbrainz002.madcarz'
+        },
+
+
+        'task-reminder': {
+            title: 'Task Reminder Android App',
+            category: 'Productivity Tool',
+            desc: 'A smart daily planner and checklist application that schedules persistent notifications and alarm alerts for important deadlines. Syncs with local storage for secure data control.',
             linkText: 'View Source on GitHub',
             url: 'https://github.com'
         },
-        'study-planner': {
-            title: 'Study Planner Android App',
-            category: 'Student Productivity Tool',
-            desc: 'A clean calendar and task schedule manager for students. Supports custom checklists, grade analytics, and notification alarms before exam periods.',
+        'weather-alert': {
+            title: 'Weather Alert Android App',
+            category: 'Utilities',
+            desc: 'A minimal real-time weather alerts and daily forecast application using modern public weather APIs. Offers responsive home widgets and low power consumption design.',
             linkText: 'View on Google Play',
             url: 'https://play.google.com/store'
         },
+        'finance-manager': {
+            title: 'Finance Manager Android App',
+            category: 'Finance Tracker',
+            desc: 'A private dashboard and budgeting tracker that visualizes monthly cash flows. Users can configure custom spend categories, set limits, and export monthly CSV sheets.',
+            linkText: 'View Source on GitHub',
+            url: 'https://github.com'
+        },
         // Books
         'positive-thinking': {
-            title: 'The Power of Positive Thinking',
+            title: 'Learn Body Language: simple and easy learning',
             category: 'Self-Help Book published on Kindle',
-            desc: 'A motivational book detailing structured approaches to daily mindfulness, building supportive habits, and reframing obstacles into positive action points.',
+            desc: 'This eBook provides an in-depth exploration of body language, including the definition, basics, and important aspects such as posture, gestures, facial expression, eye contact, and interpretation..',
             linkText: 'Find on Amazon Kindle',
-            url: 'https://amazon.com'
+            url: 'https://www.amazon.in/dp/B0BVGSRS71'
         },
         'success-mindset': {
-            title: 'Success Mindset',
-            category: 'Growth & Business Success Book',
-            desc: 'A professional growth guide outlining the core concepts of grit, continuous education, and establishing robust systems for workflow optimization.',
+            title: 'Sri Lalitha Stotravani – శ్రీ లలితా స్తోత్రవాణి',
+            category: 'Devotional Book',
+            desc: 'devotional Telugu ebook featuring traditional stotras, shlokas, and namavalis dedicated to Goddess Lalitha Tripurasundari, the supreme embodiment of divine beauty, grace, and Shakti. .',
             linkText: 'Find on Amazon Store',
-            url: 'https://amazon.com'
+            url: 'https://www.amazon.in/dp/B0GNP9DHY9'
         },
         'focus-discipline': {
-            title: 'Focus, Discipline & Consistency',
-            category: 'Goal Achievement Strategies Book',
-            desc: 'A book focused on deep-work routines, eliminating distractions, and creating daily workflows that lead to compounding long-term success.',
+            title: 'Timmy and the Quest for Friendship: An Adventure of Courage and Hope',
+            category: 'Story Book',
+            desc: 'story about a young boy named Timmy, who sets out on a dangerous journey with his friends to save their world from darkness..',
             linkText: 'Find on Amazon Store',
-            url: 'https://amazon.com'
+            url: 'https://www.amazon.com/dp/B0BVT3QXJH'
         }
     };
 

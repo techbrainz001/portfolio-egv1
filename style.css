@@ -1473,3 +1473,225 @@ img {
     margin-top: 2px;
 }
 
+/* ==========================================================================
+   ANDROID APPS PAGE SPECIFIC STYLES
+   ========================================================================== */
+.apps-page-hero {
+    background-color: var(--primary-navy);
+    padding-top: calc(var(--header-height) + 40px);
+    padding-bottom: 50px;
+    color: var(--text-light);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.apps-page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 50% 50%, rgba(229, 169, 59, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.apps-page-hero h1 {
+    color: var(--text-light);
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+.apps-page-hero p {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Back Link Header Button */
+.btn-back-home {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--border-light);
+    padding: 8px 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    transition: var(--transition-fast);
+}
+
+.btn-back-home:hover {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: var(--primary-navy);
+}
+
+/* Filters */
+.apps-filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 35px 0;
+}
+
+.filter-btn {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-muted);
+    padding: 8px 20px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: var(--primary-navy);
+    box-shadow: 0 4px 10px rgba(229, 169, 59, 0.15);
+}
+
+/* Google Play Styled App Cards */
+.play-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.play-card {
+    background-color: var(--bg-white);
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 15px rgba(2, 12, 27, 0.03);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.play-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(229, 169, 59, 0.25);
+    box-shadow: var(--hover-shadow);
+}
+
+.play-app-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Vibrant icon backgrounds matching professional theme */
+.play-icon-red { background-color: var(--color-red); }
+.play-icon-green { background-color: var(--color-green); }
+.play-icon-blue { background-color: var(--color-blue); }
+.play-icon-purple { background-color: var(--color-purple); }
+.play-icon-orange { background-color: #f97316; }
+.play-icon-teal { background-color: var(--color-teal); }
+
+.play-app-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+.play-app-details h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    line-height: 1.25;
+    margin-bottom: 2px;
+}
+
+.play-app-category {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--color-blue);
+    margin-bottom: 8px;
+}
+
+.play-btn {
+    background-color: var(--primary-navy);
+    color: var(--text-light);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.play-btn:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-navy);
+}
+
+/* Empty filter state */
+.no-apps-message {
+    grid-column: span 3;
+    text-align: center;
+    padding: 40px;
+    background-color: var(--bg-white);
+    border-radius: var(--border-radius);
+    border: 1px dashed var(--border-light);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Animations for filter filtering */
+@keyframes fadeInCard {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.play-card.filtering {
+    animation: fadeInCard 0.4s ease forwards;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+    .play-apps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .no-apps-message {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .play-apps-grid {
+        grid-template-columns: 1fr;
+    }
+    .no-apps-message {
+        grid-column: span 1;
+    }
+    .play-card {
+        padding: 16px 20px;
+    }
+    .apps-page-hero h1 {
+        font-size: 2.2rem;
+    }
+}
+
+

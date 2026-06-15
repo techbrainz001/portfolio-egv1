@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Applications | Goutham Varma Ellanti</title>
+    <meta name="description" content="Explore Android applications published and developed by Goutham Varma Ellanti.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-text">GOUTHAM VARMA ELLANTI</a>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation"
+                aria-controls="primaryNavigation">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+
+            <nav class="nav-links" id="primaryNavigation">
+                <ul>
+                    <li><a href="index.html#hero" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about-experience" class="nav-link">About</a></li>
+                    <li><a href="index.html#about-experience" class="nav-link">Experience</a></li>
+                    <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                    <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button class="btn-download-resume" id="downloadResumeBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download Resume
+            </button>
+        </div>
+    </header>
+
+    <!-- Apps Page Hero Section -->
+    <section class="apps-page-hero">
+        <h1>Android Applications</h1>
+        <p>A showcase of professional, user-centric mobile applications designed, developed, and published to Google
+            Play Store.</p>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+
+        <!-- Category Filters -->
+        <div class="apps-filter-container">
+            <button class="filter-btn active" data-filter="all">All Apps</button>
+            
+            <button class="filter-btn" data-filter="gods">Gods</button>
+            <button class="filter-btn" data-filter="games">Games</button>
+            <button class="filter-btn" data-filter="quotes">Quotes</button>
+            <button class="filter-btn" data-filter="tools">Tools</button>
+        </div>
+
+        <!-- Apps Grid -->
+<div class="play-apps-grid" id="appsGrid">
+
+    <!-- TOOLS APPS (2) -->
+    
+    <div class="play-card" data-category="tools">
+        <div class="play-app-icon-wrapper"><img src="assets/text.webp" alt="TextGenius"></div>
+        <div class="play-app-details">
+            <h3>TextGenius</h3>
+            <p class="play-app-category">Tools</p>
+            <a href="https://play.google.com/store/apps/details?id=text.geniusai"target="_blank"class="play-btn">Google Play</a>
+        </div>
+    </div>
+
+
+    <div class="play-card" data-category="tools">
+        <div class="play-app-icon-wrapper"><img src="assets/fin.webp" alt="FinGenie Loan & Tax Calculator"></div>
+        <div class="play-app-details">
+            <h3>FinGenie–Loan & Tax Calculator</h3>
+            <p class="play-app-category">Tools</p>
+            <a href="https://play.google.com/store/apps/details?id=com.techbrainz002.fingenie"target="_blank"class="play-btn">Google Play</a>
+            
+        </div>
+    </div>
+
+    <div class="play-card" data-category="tools">
+        <div class="play-app-icon-wrapper"><img src="assets/calc.webp" alt="NeonCalc"></div>
+        <div class="play-app-details">
+            <h3>NeonCalc</h3>
+            <p class="play-app-category">Tools</p>
+            <a href="https://play.google.com/store/apps/details?id=neoncalc.abtn"target="_blank"class="play-btn">Google Play</a>
+        </div>
+    </div>
+
+
+    <!-- GODS APPS (16) -->
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper"><img src="assets/shiva.webp" alt="Sri Shiva Stotras"></div><div class="play-app-details"><h3>Sri Shiva Stotras</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.shiva"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/surya.webp" alt="Sri Surya Stotras"></div><div class="play-app-details"><h3>Sri Surya Stotras</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.surya&hl=en"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/hanu.webp" alt="Hanuman Slokas MP3"></div><div class="play-app-details"><h3>Hanuman Slokas (MP3)</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.hanuman.techbrainz"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/sandhya.webp" alt="Sandhya Vandanam">
+</div><div class="play-app-details"><h3>Sandhya Vandanam & Stotras</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.sandhya"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/baba.webp" alt="Sri Sai Baba Stotras"></div><div class="play-app-details"><h3>Sri Sai Baba Stotras (Telugu)</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=sri.saibabastotras"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/dakshina.webp" alt="Sri Dakshinamurthy Stotras"></div><div class="play-app-details"><h3>Sri Dakshinamurthy Stotras</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.dakshinamurthy"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/navagraha.webp" alt="Navagraha Stotras"></div><div class="play-app-details"><h3>Navagraha Stotras</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.navagraha"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/ayyappa.webp" alt="Sri Ayyappa Stotras"></div><div class="play-app-details"><h3>Sri Ayyappa Stotras (Telugu)</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.ayyappa"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/nama.webp" alt="Namavalis Telugu"></div><div class="play-app-details"><h3>Namavalis (Telugu)</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.namavali"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/subra.webp" alt="Sri Subrahmanya Stotras"></div><div class="play-app-details"><h3>Sri Subrahmanya Stotras</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.subrahmanya"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/hanuma.webp" alt="Hanuman Stotra"></div><div class="play-app-details"><h3>Hanuman Stotra</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=hanuman.stotra"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/ganesha.webp" alt="Sri Ganesha Stotras"></div><div class="play-app-details"><h3>Sri Ganesha Stotras</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.ganesha"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/shak1.webp" alt="Shaktira Volume 1"></div><div class="play-app-details"><h3>Shaktira – Vol I</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.shaktira1"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/shak2.webp" alt="Shaktira Volume 1"></div><div class="play-app-details"><h3>Shaktira – Vol II</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.shaktira2"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/vaish.webp" alt="Vaishnavam"></div><div class="play-app-details"><h3>Vaishnavam</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.vaishnavam"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="gods"><div class="play-app-icon-wrapper">
+    <img src="assets/naga.webp" alt="Naga Devata Stotras"></div><div class="play-app-details"><h3>Naga Devata Stotras (Telugu)</h3><p class="play-app-category">Gods</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.nagadevata"target="_blank"class="play-btn">Google Play</a></div></div>
+
+
+    <!-- GAMES (3) -->
+    <div class="play-card" data-category="games">
+        <div class="play-app-icon-wrapper"><img src="assets/naruto.png" alt="MadCarz"></div>
+        <div class="play-app-details">
+            <h3>Naruto Game Changer: Ultimate Quiz</h3>
+            <p class="play-app-category">Games</p>
+            <a href="https://www.amazon.in/Naruto-Game-Changer-Ultimate-Quiz/dp/B0D1R9HR1V/ref=sr_1_4?dib=eyJ2IjoiMSJ9.42rUz5_dPr_OhmcQPTAfsob8H5QGwfV0XWmMv0C6en3YH4R0MdfWAZwN_mo2wXme.XdG1fkLhq8nDauV5PPRgKj_Iqs-jHE5x8mE-RCXsKNg&dib_tag=se&qid=1754814288&refinements=p_4%3AGoutham+Varma+E&s=mobile-apps&search-type=ss&sr=1-4"target="_blank"class="play-btn">Google Play</a>
+        </div>
+    </div>
+
+    <div class="play-card" data-category="games">
+        <div class="play-app-icon-wrapper"><img src="assets/mad.webp" alt="MadCarz"></div>
+        <div class="play-app-details">
+            <h3>MadCarz</h3>
+            <p class="play-app-category">Games</p>
+            <a href="https://play.google.com/store/apps/details?id=com.techbrainz002.madcarz"target="_blank"class="play-btn">Google Play</a>
+        </div>
+    </div>
+
+    <div class="play-card" data-category="games">
+        <div class="play-app-icon-wrapper"><img src="assets/cosmic.webp" alt="MadCarz"></div>
+        <div class="play-app-details">
+            <h3>CosmicStack</h3>
+            <p class="play-app-category">Games</p>
+            <a href="https://play.google.com/store/apps/details?id=com.techbrainz.cosmicstack"target="_blank"class="play-btn">Google Play</a>
+        </div>
+    </div>
+
+
+    <!-- QUOTES APPS (11) -->
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/mental.webp" alt="Mental Health Quotes Master"></div><div class="play-app-details"><h3>Mental Health Quotes Master</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.mentalhealthquotes"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/inner.webp" alt="Quotes for Inner Peace"></div><div class="play-app-details"><h3>Quotes for Inner Peace</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.innerpeace"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/hustle.webp" alt="Hustle Quotes"></div><div class="play-app-details"><h3>Hustle Quotes (100+ Status)</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.hustle"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/start.webp" alt="Startup Quotes"></div><div class="play-app-details"><h3>Startup Quotes</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.startup"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/anxiety.webp" alt="Anxiety Relief Quotes"></div><div class="play-app-details"><h3>Anxiety Relief Quotes</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.anxietyreliefquotes"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/haha.webp" alt="HAHA JOKES"></div><div class="play-app-details"><h3>HAHA JOKES</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=haha.app"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/political.webp" alt="Political Quotes Master"></div><div class="play-app-details"><h3>Political Quotes Master</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=political.quotesmaster"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/entre.webp" alt="Entrepreneur Quotes"></div><div class="play-app-details"><h3>Entrepreneur Quotes 100+Status</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.entrepreneur&hl=en_IN"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/healing.webp" alt="Quotes for Healing Words"></div><div class="play-app-details"><h3>Quotes for Healing Words</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.healingwords"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/mind.webp" alt="MindsetSpark"></div><div class="play-app-details"><h3>MindsetSpark</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.mindsetspark"target="_blank"class="play-btn">Google Play</a></div></div>
+
+    <div class="play-card" data-category="quotes"><div class="play-app-icon-wrapper">
+    <img src="assets/self.webp" alt="Self-Care Daily Quotes Master"></div><div class="play-app-details"><h3>Self-Care Daily Quotes Master</h3><p class="play-app-category">Quotes</p><a href="https://play.google.com/store/apps/details?id=com.techbrainz002.selfcare"target="_blank"class="play-btn">Google Play</a></div></div>
+
+
+
+</div>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-copyright">
+                <p>&copy; 2026 Goutham Varma Ellanti. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Details Modal (reused from main landing logic) -->
+    <div class="modal-overlay" id="detailsModal">
+        <div class="modal-card detail-modal-card">
+            <button class="modal-close-btn" id="closeDetailsModal" aria-label="Close modal">&times;</button>
+            <div id="detailsModalContent">
+                <!-- Injected dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Custom Category Filtering Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const playCards = document.querySelectorAll('.play-card');
+            const grid = document.getElementById('appsGrid');
+
+            // Create a "No apps found" placeholder message if missing
+            const emptyStateMsg = document.createElement('div');
+            emptyStateMsg.className = 'no-apps-message';
+            emptyStateMsg.textContent = 'No applications found under this category.';
+            emptyStateMsg.style.display = 'none';
+            grid.appendChild(emptyStateMsg);
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Reset active class
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+                    let visibleCount = 0;
+
+                    playCards.forEach(card => {
+                        card.classList.remove('filtering'); // Reset animations
+                        const cardCategory = card.getAttribute('data-category');
+
+                        if (filterValue === 'all' || cardCategory === filterValue) {
+                            card.style.display = 'flex';
+                            visibleCount++;
+                            // Force reflow to restart CSS animation
+                            void card.offsetWidth;
+                            card.classList.add('filtering');
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Manage empty placeholder visibility
+                    if (visibleCount === 0) {
+                        emptyStateMsg.style.display = 'block';
+                        emptyStateMsg.classList.add('filtering');
+                    } else {
+                        emptyStateMsg.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
