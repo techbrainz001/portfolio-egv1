@@ -620,7 +620,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg-white);
+    background-color: var(--bg-card);
     z-index: 5;
 }
 
@@ -1471,12 +1471,13 @@ img {
         left: -100%;
         width: 100%;
         height: calc(100vh - var(--header-height));
-        background-color: var(--bg-white);
+        background-color: var(--bg-card);
         flex-direction: column;
         align-items: center;
         padding-top: 50px;
         transition: var(--transition-normal);
-        border-top: 1px solid var(--border-light);
+        border-top: 1px solid var(--border-color);
+        z-index: 999;
     }
     
     .nav-links.active {
@@ -1491,6 +1492,7 @@ img {
     
     .nav-link {
         font-size: 1.2rem;
+        color: var(--text-title);
     }
     
     .btn-download-resume {
@@ -1712,7 +1714,16 @@ img {
     justify-content: center;
     color: var(--text-light);
     flex-shrink: 0;
+    overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.play-app-icon-wrapper img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
 }
 
 /* Vibrant icon backgrounds matching professional theme */
@@ -1810,3 +1821,119 @@ img {
 }
 
 
+
+/* ==========================================================================
+   DARK MODE SPECIFIC OVERRIDES
+   ========================================================================== */
+[data-theme="dark"] .skills-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .trait-tag {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .trait-tag:hover {
+    background-color: var(--bg-hero-light);
+}
+
+[data-theme="dark"] .education-block {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .education-block:hover {
+    background-color: var(--bg-hero-light);
+    border-color: var(--accent-gold);
+}
+
+[data-theme="dark"] .app-item {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .app-item:hover {
+    background-color: var(--bg-hero-light);
+}
+
+[data-theme="dark"] .book-item {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .book-item:hover {
+    background-color: var(--bg-hero-light);
+}
+
+[data-theme="dark"] .filter-btn {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+    color: var(--text-muted-theme);
+}
+
+[data-theme="dark"] .play-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .play-app-details h3 {
+    color: var(--text-title);
+}
+
+[data-theme="dark"] .web-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .browser-frame {
+    background-color: var(--bg-hero-light);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .modal-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .detail-modal-tag {
+    background-color: var(--bg-hero-light);
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .detail-modal-body p {
+    color: var(--text-muted-theme);
+}
+
+[data-theme="dark"] .form-group label {
+    color: var(--text-title);
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group textarea {
+    background-color: var(--bg-hero-light);
+    border-color: var(--border-color);
+    color: var(--text-body);
+}
+
+[data-theme="dark"] .timeline-duration {
+    background-color: var(--bg-card);
+    color: var(--text-muted-theme);
+}
+
+[data-theme="dark"] .role-title {
+    color: var(--text-title);
+}
+
+[data-theme="dark"] .btn-app-action {
+    background-color: var(--bg-hero-light);
+    border-color: var(--border-color);
+    color: var(--text-title);
+}
+
+[data-theme="dark"] .btn-book-action {
+    background-color: var(--bg-hero-light);
+    border-color: var(--border-color);
+    color: var(--text-title);
+}

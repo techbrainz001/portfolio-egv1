@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toastMessage = document.getElementById('toastMessage');
 
     function showToast(message, duration = 3000) {
+        if (!toast || !toastMessage) return;
         toastMessage.textContent = message;
         toast.classList.add('active');
 
@@ -137,12 +138,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const openContactButtons = document.querySelectorAll('.open-contact-modal');
     const contactForm = document.getElementById('contactForm');
 
+    // Declare detailsModal here so it's in scope for the window click handler below
+    const detailsModal = document.getElementById('detailsModal');
+    const closeDetailsBtn = document.getElementById('closeDetailsModal');
+    const detailsContent = document.getElementById('detailsModalContent');
+
     function openModal(modal) {
+        if (!modal) return;
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // prevent double scrollbars
+        document.body.style.overflow = 'hidden';
     }
 
     function closeModal(modal) {
+        if (!modal) return;
         modal.classList.remove('active');
         document.body.style.overflow = '';
     }
@@ -157,11 +165,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close modal on background click
     window.addEventListener('click', (e) => {
-        if (e.target === contactModal) {
+        if (contactModal && e.target === contactModal) {
             closeModal(contactModal);
         }
-        if (e.target === detailsModal) {
+        if (detailsModal && e.target === detailsModal) {
             closeModal(detailsModal);
+        }
+    });
+
+    // Close modals on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (contactModal && contactModal.classList.contains('active')) closeModal(contactModal);
+            if (detailsModal && detailsModal.classList.contains('active')) closeModal(detailsModal);
         }
     });
 
@@ -205,9 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        7. DETAILS MODAL (PROJECTS, APPS & BOOKS DESCRIPTION INJECTION)
        ========================================================================== */
-    const detailsModal = document.getElementById('detailsModal');
-    const closeDetailsBtn = document.getElementById('closeDetailsModal');
-    const detailsContent = document.getElementById('detailsModalContent');
+    // detailsModal, closeDetailsBtn, detailsContent already declared above in section 6
 
     // Rich mockup data for item descriptions
     const portfolioDetails = {

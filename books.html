@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Published Books | Goutham Varma Ellanti</title>
+    <meta name="description"
+        content="Explore books published by Goutham Varma Ellanti — spanning self-help, devotional literature, and inspiring storytelling, available on Amazon Kindle and more.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ============================================================
+           BOOKS PAGE — LOCAL OVERRIDES & UNIQUE STYLES
+           ============================================================ */
+
+        /* Hero — warm amber/gold gradient to differentiate from apps page */
+        .books-page-hero {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #0d2547 60%, #1a1030 100%);
+            padding-top: calc(var(--header-height) + 50px);
+            padding-bottom: 60px;
+            color: var(--text-light);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .books-page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(229, 169, 59, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.05) 0%, transparent 45%);
+            pointer-events: none;
+        }
+
+        /* Floating decorative book icon */
+        .books-page-hero::after {
+            content: '📚';
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 7rem;
+            opacity: 0.06;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .books-page-hero h1 {
+            color: var(--text-light);
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .books-page-hero p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            max-width: 620px;
+            margin: 0 auto 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stat badges below hero description */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stat-badge {
+            background-color: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            transition: var(--transition-fast);
+        }
+
+        .hero-stat-badge:hover {
+            background-color: rgba(229, 169, 59, 0.12);
+            border-color: rgba(229, 169, 59, 0.4);
+            color: var(--accent-gold);
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--accent-gold);
+            flex-shrink: 0;
+        }
+
+        /* ============================================================
+           BOOKS GRID — 5 columns on large screens
+           ============================================================ */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            margin-bottom: 60px;
+        }
+
+        /* ============================================================
+           BOOK CARD — compact design to fit 4-5 per row
+           ============================================================ */
+        .book-card {
+            background-color: var(--bg-card);
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-normal);
+            position: relative;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(229, 169, 59, 0.35);
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* Shimmer accent on top edge */
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), #cb9229, var(--accent-gold));
+            background-size: 200% 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .book-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Cover Image Area — tighter ratio for compact layout */
+        .book-cover-area {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [data-theme="dark"] .book-cover-area {
+            background: linear-gradient(135deg, #0d1f36, #0a1424);
+        }
+
+        .book-cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .book-card:hover .book-cover-img {
+            transform: scale(1.05);
+        }
+
+        /* Publisher badge overlay */
+        .book-publisher-badge {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background-color: rgba(5, 22, 46, 0.85);
+            color: var(--accent-gold);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            letter-spacing: 0.4px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(229, 169, 59, 0.3);
+            z-index: 2;
+        }
+
+        /* Card Body — tighter padding for compact cards */
+        .book-card-body {
+            padding: 14px 14px 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .book-genre-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--color-purple);
+            margin-bottom: 6px;
+        }
+
+        .book-genre-tag.genre-selfhelp {
+            color: var(--color-blue);
+        }
+
+        .book-genre-tag.genre-devotional {
+            color: #f97316;
+        }
+
+        .book-genre-tag.genre-story {
+            color: var(--color-green);
+        }
+
+        .book-genre-tag.genre-fiction {
+            color: var(--color-purple);
+        }
+
+        .book-card-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-title);
+            line-height: 1.3;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .book-card-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted-theme);
+            line-height: 1.55;
+            flex-grow: 1;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Action buttons row */
+        .book-card-actions {
+            display: flex;
+            gap: 7px;
+            margin-top: auto;
+        }
+
+        .btn-book-buy {
+            flex: 1;
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            border: none;
+            border-radius: 7px;
+            padding: 7px 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .btn-book-buy:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-navy);
+        }
+
+        .btn-book-details {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted-theme);
+            border-radius: 7px;
+            padding: 7px 10px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .btn-book-details:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Animation: fade-in on load */
+        @keyframes bookFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .book-card:nth-child(1)  { animation: bookFadeIn 0.45s 0.04s ease both; }
+        .book-card:nth-child(2)  { animation: bookFadeIn 0.45s 0.08s ease both; }
+        .book-card:nth-child(3)  { animation: bookFadeIn 0.45s 0.12s ease both; }
+        .book-card:nth-child(4)  { animation: bookFadeIn 0.45s 0.16s ease both; }
+        .book-card:nth-child(5)  { animation: bookFadeIn 0.45s 0.20s ease both; }
+        .book-card:nth-child(6)  { animation: bookFadeIn 0.45s 0.24s ease both; }
+        .book-card:nth-child(7)  { animation: bookFadeIn 0.45s 0.28s ease both; }
+        .book-card:nth-child(8)  { animation: bookFadeIn 0.45s 0.32s ease both; }
+        .book-card:nth-child(9)  { animation: bookFadeIn 0.45s 0.36s ease both; }
+        .book-card:nth-child(10) { animation: bookFadeIn 0.45s 0.40s ease both; }
+        .book-card:nth-child(11) { animation: bookFadeIn 0.45s 0.44s ease both; }
+        .book-card:nth-child(12) { animation: bookFadeIn 0.45s 0.48s ease both; }
+        .book-card:nth-child(13) { animation: bookFadeIn 0.45s 0.52s ease both; }
+        .book-card:nth-child(14) { animation: bookFadeIn 0.45s 0.56s ease both; }
+        .book-card:nth-child(15) { animation: bookFadeIn 0.45s 0.60s ease both; }
+
+        /* ============================================================
+           SECTION INTRO ROW
+           ============================================================ */
+        .books-section-intro {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .books-section-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .books-section-label h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-title);
+        }
+
+        .section-label-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: rgba(229, 169, 59, 0.12);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .book-count-badge {
+            background-color: var(--accent-gold);
+            color: var(--primary-navy);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        /* ============================================================
+           RESPONSIVE BREAKPOINTS
+           ============================================================ */
+        /* Large desktops: 5 columns (default above) */
+
+        /* Medium desktops / tablets landscape: 4 columns */
+        @media (max-width: 1280px) {
+            .books-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Tablets: 3 columns */
+        @media (max-width: 900px) {
+            .books-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 14px;
+            }
+        }
+
+        /* Tablets portrait: 2 columns */
+        @media (max-width: 640px) {
+            .books-page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .books-page-hero::after {
+                display: none;
+            }
+
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .books-section-intro {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .book-card-body {
+                padding: 10px 10px 12px;
+            }
+
+            .book-card-title {
+                font-size: 0.82rem;
+            }
+
+            .book-card-desc {
+                display: none; /* hide desc on very small cards to keep them clean */
+            }
+        }
+
+        /* Mobile phones: 2 columns still (books need to be identifiable) */
+        @media (max-width: 400px) {
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-text">GOUTHAM VARMA ELLANTI</a>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation"
+                aria-controls="primaryNavigation">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+
+            <nav class="nav-links" id="primaryNavigation">
+                <ul>
+                    <li><a href="index.html#hero" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about-experience" class="nav-link">About</a></li>
+                    <li><a href="index.html#about-experience" class="nav-link">Experience</a></li>
+                    <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                    <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button class="btn-download-resume" id="downloadResumeBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download Resume
+            </button>
+        </div>
+    </header>
+
+    <!-- Books Page Hero Section -->
+    <section class="books-page-hero">
+        <h1>Published Books</h1>
+        <p>A curated collection of books authored and published by Goutham Varma Ellanti — from self-help and
+            devotional literature to inspiring stories for all ages.</p>
+
+        <div class="hero-stats">
+            <span class="hero-stat-badge">
+                <span class="badge-dot"></span>
+                Available on Amazon Kindle
+            </span>
+            <span class="hero-stat-badge">
+                <span class="badge-dot"></span>
+                Multiple Genres
+            </span>
+            <span class="hero-stat-badge">
+                <span class="badge-dot"></span>
+                Self-Published Author
+            </span>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+
+        <!-- Section Intro Row -->
+        <div class="books-section-intro">
+            <div class="books-section-label">
+                <div class="section-label-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                </div>
+                <h2>All Published Books</h2>
+                <span class="book-count-badge">15 Titles</span>
+            </div>
+        </div>
+
+        <!-- Books Grid -->
+        <div class="books-grid" id="booksGrid">
+
+            <!-- BOOK 1: Learn Body Language -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book1.webp" alt="Learn Body Language" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-selfhelp">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Self-Help
+                    </span>
+                    <h3 class="book-card-title">Learn Body Language: Simple and Easy Learning</h3>
+                    <p class="book-card-desc">An in-depth exploration of body language covering posture, gestures, facial expressions, eye contact, and practical interpretation for everyday communication.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in/dp/B0BVGSRS71" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-body-language">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 2: Sri Lalitha Stotravani -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book2.webp" alt="Sri Lalitha Stotravani" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Store</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Sri Lalitha Stotravani – శ్రీ లలితా స్తోత్రవాణి</h3>
+                    <p class="book-card-desc">A devotional Telugu eBook featuring traditional stotras, shlokas, and namavalis dedicated to Goddess Lalitha Tripurasundari — the supreme embodiment of divine beauty, grace, and Shakti.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in/dp/B0GNP9DHY9" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-lalitha">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 3: Timmy and the Quest for Friendship -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book3.webp" alt="Timmy and the Quest for Friendship" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Store</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-story">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Story Book
+                    </span>
+                    <h3 class="book-card-title">Timmy and the Quest for Friendship: An Adventure of Courage and Hope</h3>
+                    <p class="book-card-desc">A heartwarming story about young Timmy who sets out on a dangerous journey with friends to save their world from darkness — a tale of courage, hope, and the power of true friendship.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.com/dp/B0BVT3QXJH" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-timmy">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 4: Sri Vinayaka Stotramaala -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book-focus.png" alt="Sri Vinayaka Stotramaala" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Sri Vinayaka Stotramaala: A Treasury of Lord Ganesha Hymns</h3>
+                    <p class="book-card-desc">A sacred collection of hymns, stotras, and namavalis dedicated to Lord Ganesha — the remover of obstacles and bestower of wisdom and prosperity.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-vinayaka">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 5: Learn Women in Leadership -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book-power.png" alt="Learn Women in Leadership" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-selfhelp">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Self-Help
+                    </span>
+                    <h3 class="book-card-title">Learn Women in Leadership: Simple and Easy Learning</h3>
+                    <p class="book-card-desc">An empowering guide that explores women's journey in leadership roles — covering key traits, challenges, strategies, and inspiring real-world examples.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-women-leadership">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 6: Subrahmanya Stotramaala -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book-success.png" alt="Subrahmanya Stotramaala" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">SUBRAHMANYA STOTRAMAALA: శ్రీ సుబ్రహ్మణ్య స్తోత్రాలు</h3>
+                    <p class="book-card-desc">A comprehensive anthology of sacred stotras, kavachams, and ashtottaras dedicated to Lord Subrahmanya (Kartikeya) — god of valor, wisdom, and victory.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-subrahmanya-stotra">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 7: How To Crack Interviews -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book1.webp" alt="How To Crack Interviews" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-selfhelp">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Self-Help
+                    </span>
+                    <h3 class="book-card-title">How To Crack Interviews: Simple and Easy Learning</h3>
+                    <p class="book-card-desc">A practical handbook packed with interview techniques, common Q&A patterns, confidence-building tips, and real-world preparation strategies to land your dream job.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-crack-interviews">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 8: Sri Lakshmi Stotravani -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book2.webp" alt="Sri Lakshmi Stotravani" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Sri Lakshmi Stotravani – శ్రీ లక్ష్మీ స్తోత్రవాణి</h3>
+                    <p class="book-card-desc">A devotional eBook presenting sacred stotras and namavalis of Goddess Lakshmi — the bestower of wealth, abundance, and spiritual prosperity, in the Telugu tradition.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-lakshmi">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 9: Sri Durga Stotravani -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book3.webp" alt="Sri Durga Stotravani" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Sri Durga Stotravani – శ్రీ దుర్గా స్తోత్రవాణి</h3>
+                    <p class="book-card-desc">A powerful collection of Durga stotras, kavachams, and ashtottaras in Telugu — invoking the goddess of strength, courage, and protection against all adversity.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in/dp/B0BVGSRS71" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-durga">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 10: Devi Stotravani -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book-focus.png" alt="Devi Stotravani" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Store</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Devi Stotravani – దేవి స్తోత్రవాణి</h3>
+                    <p class="book-card-desc">A devotional anthology celebrating the divine feminine — featuring timeless stotras dedicated to various manifestations of Goddess Devi in the Telugu tradition.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in/dp/B0GNP9DHY9" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-devi">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 11: Sri Nataraja Stotravani -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book-power.png" alt="Sri Nataraja Stotravani" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Store</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Sri Nataraja Stotravani – శ్రీ నటరాజ స్తోత్రవాణి</h3>
+                    <p class="book-card-desc">A beautiful compilation of stotras and hymns dedicated to Lord Nataraja — the cosmic dancer, representing the cycle of creation and destruction in Shaiva tradition.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.com/dp/B0BVT3QXJH" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-nataraja">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 12: Sri Dakshinamurthy Stotravani -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book-success.png" alt="Sri Dakshinamurthy Stotravani" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Sri Dakshinamurthy Stotravani – శ్రీ దక్షిణామూర్తి స్తోత్రవాణి</h3>
+                    <p class="book-card-desc">Sacred stotras and shlokas of Lord Dakshinamurthy — the primordial guru in Shiva's form, symbolizing supreme knowledge, meditation, and the transmission of wisdom in silence.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-dakshinamurthy">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 13: Sri Shiva Stotravani -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book1.webp" alt="Sri Shiva Stotravani" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Sri Shiva Stotravani – శ్రీ శివ స్తోత్రవాణి</h3>
+                    <p class="book-card-desc">A devotional eBook of Shiva stotras, panchakshara mantras, and ashtotrashata namavali in Telugu — celebrating the infinite grace and supreme consciousness of Lord Shiva.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-shiva">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 14: Sri Ganesha Stotras -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book2.webp" alt="Sri Ganesha Stotras" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Sri Ganesha Stotras – శ్రీ గణేశ స్తోత్రాలు</h3>
+                    <p class="book-card-desc">A curated collection of Ganesha stotras, ashtottaras, and arati prayers in Telugu — invoking blessings of wisdom, auspiciousness, and the removal of all life's obstacles.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-ganesha">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK 15: Sri Subrahmanya Stotravani -->
+            <div class="book-card">
+                <div class="book-cover-area">
+                    <img src="assets/book3.webp" alt="Sri Subrahmanya Stotravani" class="book-cover-img">
+                    <span class="book-publisher-badge">Amazon Kindle</span>
+                </div>
+                <div class="book-card-body">
+                    <span class="book-genre-tag genre-devotional">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+                        Devotional
+                    </span>
+                    <h3 class="book-card-title">Sri Subrahmanya Stotravani – శ్రీ సుబ్రహ్మణ్య స్తోత్రవాణి</h3>
+                    <p class="book-card-desc">Sacred hymns and stotras of Lord Subrahmanya (Muruga) in Telugu — celebrating the divine warrior's grace, speed of consciousness, and blessings of health and clarity.</p>
+                    <div class="book-card-actions">
+                        <a href="https://www.amazon.in" target="_blank" rel="noopener noreferrer" class="btn-book-buy">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Buy
+                        </a>
+                        <button class="btn-book-details open-book-modal" data-book="b-subrahmanya">Details</button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /books-grid -->
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-copyright">
+                <p>&copy; 2026 Goutham Varma Ellanti. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Details Modal -->
+    <div class="modal-overlay" id="detailsModal">
+        <div class="modal-card detail-modal-card">
+            <button class="modal-close-btn" id="closeDetailsModal" aria-label="Close modal">&times;</button>
+            <div id="detailsModalContent">
+                <!-- Injected dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        /* ================================================================
+           BOOKS PAGE — Self-contained modal data for all 15 book cards.
+           Runs AFTER script.js so the global openModal / closeModal
+           functions are already defined. We re-use the same detailsModal
+           element but supply our own complete data map here.
+           ================================================================ */
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const booksData = {
+                'b-body-language': {
+                    title: 'Learn Body Language: Simple and Easy Learning',
+                    category: 'Self-Help · Amazon Kindle',
+                    desc: 'An in-depth exploration of body language covering its definition, basics, and key aspects such as posture, gestures, facial expressions, eye contact, and real-world interpretation for more effective everyday communication.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in/dp/B0BVGSRS71'
+                },
+                'b-lalitha': {
+                    title: 'Sri Lalitha Stotravani – శ్రీ లలితా స్తోత్రవాణి',
+                    category: 'Devotional · Amazon Store',
+                    desc: 'A devotional Telugu eBook featuring traditional stotras, shlokas, and namavalis dedicated to Goddess Lalitha Tripurasundari — the supreme embodiment of divine beauty, grace, and Shakti. Ideal for daily worship and spiritual practice.',
+                    linkText: 'Buy on Amazon Store',
+                    url: 'https://www.amazon.in/dp/B0GNP9DHY9'
+                },
+                'b-timmy': {
+                    title: 'Timmy and the Quest for Friendship: An Adventure of Courage and Hope',
+                    category: 'Story Book · Amazon Store',
+                    desc: 'A heartwarming story about young Timmy who sets out on a dangerous journey with his friends to save their world from darkness. A tale of courage, hope, and the enduring power of true friendship.',
+                    linkText: 'Buy on Amazon Store',
+                    url: 'https://www.amazon.com/dp/B0BVT3QXJH'
+                },
+                'b-vinayaka': {
+                    title: 'Sri Vinayaka Stotramaala: A Treasury of Lord Ganesha Hymns',
+                    category: 'Devotional · Amazon Kindle',
+                    desc: 'A sacred treasury of hymns, stotras, kavachams, and namavalis dedicated to Lord Vinayaka (Ganesha) — the auspicious remover of obstacles, bestower of wisdom, intellect, and prosperity.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in'
+                },
+                'b-women-leadership': {
+                    title: 'Learn Women in Leadership: Simple and Easy Learning',
+                    category: 'Self-Help · Amazon Kindle',
+                    desc: 'An empowering guide that explores women\'s journey in leadership roles — covering key traits, historical milestones, modern challenges, actionable strategies, and inspiring real-world examples of women who changed the world.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in'
+                },
+                'b-subrahmanya-stotra': {
+                    title: 'SUBRAHMANYA STOTRAMAALA: శ్రీ సుబ్రహ్మణ్య స్తోత్రాలు',
+                    category: 'Devotional · Amazon Kindle',
+                    desc: 'A comprehensive anthology of sacred stotras, kavachams, and ashtottaras dedicated to Lord Subrahmanya (Kartikeya) — god of valor, divine wisdom, and ultimate victory over ignorance.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in'
+                },
+                'b-crack-interviews': {
+                    title: 'How To Crack Interviews: Simple and Easy Learning',
+                    category: 'Self-Help · Amazon Kindle',
+                    desc: 'A practical, step-by-step handbook packed with proven interview techniques, common Q&A patterns, HR round strategies, confidence-building exercises, and expert tips to help you land your dream job with ease.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in'
+                },
+                'b-lakshmi': {
+                    title: 'Sri Lakshmi Stotravani – శ్రీ లక్ష్మీ స్తోత్రవాణి',
+                    category: 'Devotional · Amazon Kindle',
+                    desc: 'A devotional eBook presenting sacred stotras, ashtottaras, and namavalis of Goddess Lakshmi in Telugu — invoking blessings of wealth, abundance, harmony, and spiritual prosperity in every aspect of life.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in'
+                },
+                'b-durga': {
+                    title: 'Sri Durga Stotravani – శ్రీ దుర్గా స్తోత్రవాణి',
+                    category: 'Devotional · Amazon Kindle',
+                    desc: 'A powerful collection of Durga stotras, kavachams, and ashtottaras in Telugu — invoking the fierce and compassionate goddess of strength, courage, and complete protection against all adversity.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in/dp/B0BVGSRS71'
+                },
+                'b-devi': {
+                    title: 'Devi Stotravani – దేవి స్తోత్రవాణి',
+                    category: 'Devotional · Amazon Store',
+                    desc: 'A devotional anthology celebrating the divine feminine in all her forms — featuring timeless stotras, shlokas, and ashtottaras dedicated to various manifestations of Goddess Devi in the Telugu spiritual tradition.',
+                    linkText: 'Buy on Amazon Store',
+                    url: 'https://www.amazon.in/dp/B0GNP9DHY9'
+                },
+                'b-nataraja': {
+                    title: 'Sri Nataraja Stotravani – శ్రీ నటరాజ స్తోత్రవాణి',
+                    category: 'Devotional · Amazon Store',
+                    desc: 'A beautiful compilation of stotras and hymns dedicated to Lord Nataraja — the cosmic dancer, symbolizing the eternal cycle of creation, preservation, and dissolution within Shaiva tradition.',
+                    linkText: 'Buy on Amazon Store',
+                    url: 'https://www.amazon.com/dp/B0BVT3QXJH'
+                },
+                'b-dakshinamurthy': {
+                    title: 'Sri Dakshinamurthy Stotravani – శ్రీ దక్షిణామూర్తి స్తోత్రవాణి',
+                    category: 'Devotional · Amazon Kindle',
+                    desc: 'Sacred stotras and shlokas of Lord Dakshinamurthy — the primordial guru in Shiva\'s form, symbolizing supreme knowledge, deep meditation, and the silent transmission of cosmic wisdom to sincere seekers.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in'
+                },
+                'b-shiva': {
+                    title: 'Sri Shiva Stotravani – శ్రీ శివ స్తోత్రవాణి',
+                    category: 'Devotional · Amazon Kindle',
+                    desc: 'A devotional eBook of Shiva stotras, panchakshara mantras, and ashtotrashata namavali in Telugu — celebrating the infinite grace, supreme consciousness, and transformative power of Lord Shiva.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in'
+                },
+                'b-ganesha': {
+                    title: 'Sri Ganesha Stotras – శ్రీ గణేశ స్తోత్రాలు',
+                    category: 'Devotional · Amazon Kindle',
+                    desc: 'A curated collection of Ganesha stotras, ashtottaras, and arati prayers in Telugu — invoking the divine blessings of wisdom, auspiciousness, success, and the removal of all obstacles from life\'s path.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in'
+                },
+                'b-subrahmanya': {
+                    title: 'Sri Subrahmanya Stotravani – శ్రీ సుబ్రహ్మణ్య స్తోత్రవాణి',
+                    category: 'Devotional · Amazon Kindle',
+                    desc: 'Sacred hymns and stotras of Lord Subrahmanya (Muruga) in Telugu — celebrating the divine warrior\'s grace, clarity of consciousness, and blessings of health, wisdom, and ultimate victory.',
+                    linkText: 'Buy on Amazon Kindle',
+                    url: 'https://www.amazon.in'
+                }
+            };
+
+            const detailsModal = document.getElementById('detailsModal');
+            const detailsContent = document.getElementById('detailsModalContent');
+            const closeBtn = document.getElementById('closeDetailsModal');
+
+            function openBookModal(item) {
+                if (!item || !detailsContent) return;
+                detailsContent.innerHTML = `
+                    <div class="detail-modal-header">
+                        <h2>${item.title}</h2>
+                        <span class="detail-modal-tag">${item.category}</span>
+                    </div>
+                    <div class="detail-modal-body">
+                        <p>${item.desc}</p>
+                    </div>
+                    <div class="detail-modal-actions">
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="btn-primary">${item.linkText}</a>
+                        <button class="btn-secondary" id="modalCloseInner">Close Details</button>
+                    </div>
+                `;
+                detailsModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                // Inner close button
+                const innerClose = document.getElementById('modalCloseInner');
+                if (innerClose) {
+                    innerClose.addEventListener('click', closeBookModal, { once: true });
+                }
+            }
+
+            function closeBookModal() {
+                detailsModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Attach to all book cards
+            document.querySelectorAll('.open-book-modal').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const key = btn.getAttribute('data-book');
+                    openBookModal(booksData[key]);
+                });
+            });
+
+            // Close button (X)
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeBookModal);
+            }
+
+            // Close on overlay click
+            detailsModal.addEventListener('click', (e) => {
+                if (e.target === detailsModal) closeBookModal();
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && detailsModal.classList.contains('active')) {
+                    closeBookModal();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
